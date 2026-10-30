@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUNWAY CTM 2026 | Cali se viste de esperanza</title>
+
+    <!-- Google Fonts: Elegant Cursive & Serif combination -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-gold': '#D4AF37',
+                        'brand-gold-light': '#F3E5AB',
+                        'brand-gold-muted': '#C5A059',
+                        'brand-cream': '#FAF6F0',
+                        'brand-beige': '#F5EBE0',
+                        'brand-rose': '#E8D3C8',
+                        'brand-palo-rosa': '#D8A7B1',
+                        'brand-cobalt': '#002244',
+                        'brand-cobalt-dark': '#00152B',
+                        'brand-charcoal': '#2C2A29'
+                    },
+                    fontFamily: {
+                        cursive: ['"Great Vibes"', 'cursive'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom scrollbar and animations */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF6F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D8A7B1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C5A059;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #C5A059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cobalt-gradient-bg {
+            background: linear-gradient(135deg, #00152B 0%, #002244 60%, #003366 100%);
+        }
+
+        .rose-gold-card {
+            background: rgba(250, 246, 240, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-charcoal font-serif antialiased selection:bg-brand-palo-rosa selection:text-white">
+
+    <!-- Header / Navigation Menu -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-cream/90 backdrop-blur-md border-b border-brand-gold/20 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex flex-col">
+                    <span class="font-cursive text-3xl sm:text-4xl text-brand-cobalt leading-none">Runway CTM</span>
+                    <span class="font-sans text-[9px] uppercase tracking-[0.3em] text-brand-gold-muted font-medium text-center">Cali Moda 2026</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="font-sans text-sm uppercase tracking-widest text-brand-cobalt hover:text-brand-gold-muted transition-colors font-medium">Inicio</a>
+                    <a href="#about" class="font-sans text-sm uppercase tracking-widest text-brand-cobalt hover:text-brand-gold-muted transition-colors font-medium">Quiénes Somos</a>
+                    <a href="#catalog" class="font-sans text-sm uppercase tracking-widest text-brand-cobalt hover:text-brand-gold-muted transition-colors font-medium">Pasarela & Catálogo</a>
+                    <a href="#faq" class="font-sans text-sm uppercase tracking-widest text-brand-cobalt hover:text-brand-gold-muted transition-colors font-medium">FAQ</a>
+                </nav>
+
+                <!-- Social Action & Mobile Menu Toggle -->
+                <div class="flex items-center space-x-3">
+                    <!-- Edit Mode Toggle Button -->
+                    <button id="edit-mode-btn" onclick="toggleEditMode()" class="bg-brand-gold-light/60 hover:bg-brand-gold border border-brand-gold text-brand-cobalt px-3 py-1.5 rounded-full text-xs font-sans tracking-wider transition-all duration-300 flex items-center space-x-1.5" title="Activar/Desactivar modo edición de texto">
+                        <i class="fas fa-edit text-brand-cobalt"></i>
+                        <span id="edit-mode-label" class="hidden sm:inline">Editar Página</span>
+                    </button>
+
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center space-x-2 bg-gradient-to-r from-brand-cobalt to-brand-cobalt-dark text-brand-gold-light px-4 py-2 rounded-full text-xs font-sans tracking-wider uppercase shadow-md hover:shadow-lg hover:from-brand-gold-muted hover:to-brand-gold hover:text-white transition-all duration-300 border border-brand-gold/30">
+                        <i class="fab fa-instagram text-sm"></i>
+                        <span>Únete a Instagram</span>
+                    </a>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-brand-cobalt focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-cream border-b border-brand-gold/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block font-sans text-sm uppercase tracking-widest text-brand-cobalt py-2 border-b border-brand-rose/30">Inicio</a>
+            <a href="#about" class="block font-sans text-sm uppercase tracking-widest text-brand-cobalt py-2 border-b border-brand-rose/30">Quiénes Somos</a>
+            <a href="#catalog" class="block font-sans text-sm uppercase tracking-widest text-brand-cobalt py-2 border-b border-brand-rose/30">Pasarela & Catálogo</a>
+            <a href="#faq" class="block font-sans text-sm uppercase tracking-widest text-brand-cobalt py-2 border-b border-brand-rose/30">Preguntas Frecuentes</a>
+            <button onclick="toggleEditMode()" class="w-full text-left font-sans text-sm uppercase tracking-widest text-brand-cobalt py-2 border-b border-brand-rose/30 flex items-center justify-between">
+                <span>Editar Textos de la Página</span>
+                <i class="fas fa-edit"></i>
+            </button>
+            <a href="https://instagram.com" target="_blank" class="inline-flex items-center space-x-2 bg-brand-cobalt text-brand-gold-light px-4 py-2 rounded-full text-xs font-sans tracking-wider uppercase mt-2">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram Oficial</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HOME / HERO -->
+    <section id="home" class="relative pt-28 pb-20 md:pt-36 md:pb-32 overflow-hidden flex items-center min-h-screen">
+        <!-- Background subtle decorative shapes -->
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-palo-rosa/20 rounded-full filter blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-brand-gold-light/40 rounded-full filter blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Main Text Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-brand-palo-rosa/20 border border-brand-palo-rosa/40 text-brand-cobalt text-xs font-sans uppercase tracking-[0.2em]">
+                        <i class="fas fa-heart text-brand-palo-rosa mr-2"></i>Edición Solidaria Cali 2026
+                    </div>
+
+                    <!-- Main Banner Slogan -->
+                    <h1 class="font-cursive text-6xl sm:text-7xl md:text-8xl text-brand-cobalt leading-none tracking-wide py-2 editable-element">
+                        Cali se viste de <span class="gold-gradient-text block sm:inline font-cursive italic">esperanza</span>
+                    </h1>
+
+                    <p class="font-serif text-xl sm:text-2xl text-brand-charcoal/80 italic max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed editable-element">
+                        "Un tejido de alta costura donde la elegancia de la Sucursal del Cielo se une para abrazar y reconstruir los sueños de nuestra gente."
+                    </p>
+
+                    <p class="font-sans text-sm text-brand-charcoal/70 max-w-xl mx-auto lg:mx-0 leading-relaxed editable-element">
+                        ¡Véalo oís! La alta moda vallecaucana abre sus puertas en un evento benéfico sin precedentes. Todo lo recaudado va directo a las familias afectadas por el reciente terremoto.
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#catalog" class="w-full sm:w-auto bg-gradient-to-r from-brand-cobalt via-brand-cobalt-dark to-brand-cobalt text-brand-gold-light px-8 py-4 rounded-full font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-xl hover:scale-105 border border-brand-gold/40 text-center">
+                            Ver Colección Solidaria
+                        </a>
+                        <button onclick="openDonateModal()" class="w-full sm:w-auto bg-brand-palo-rosa/30 hover:bg-brand-palo-rosa/50 text-brand-cobalt border border-brand-palo-rosa px-8 py-4 rounded-full font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 text-center">
+                            <i class="fas fa-hand-holding-heart mr-2"></i>Donar desde $1.000 COP
+                        </button>
+                    </div>
+
+                    <!-- Regional Badge -->
+                    <div class="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-brand-gold-muted text-xs font-sans">
+                        <span class="flex items-center editable-element"><i class="fas fa-map-marker-alt text-brand-palo-rosa mr-2"></i> Colegio Taller de María</span>
+                        <span class="flex items-center editable-element"><i class="fas fa-calendar-alt text-brand-palo-rosa mr-2"></i> Noviembre 2026</span>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Card / Visual Banner -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Decorative Frame -->
+                        <div class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-brand-gold/30 via-brand-palo-rosa/40 to-brand-cobalt/20 blur-lg"></div>
+                        
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-white border border-brand-gold/30">
+                            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800" alt="Pasarela RUNWAY CTM Cali" class="w-full h-[480px] object-cover hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-cobalt/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                                <span class="font-cursive text-3xl text-brand-gold-light editable-element">Sede Oficial Colegio Taller de María</span>
+                                <p class="font-sans text-xs text-brand-beige opacity-90 editable-element">Diseños de autores vallecaucanos unidos por una misma causa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: QUIÉNES SOMOS -->
+    <section id="about" class="py-20 bg-brand-beige/50 relative border-y border-brand-rose/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-cursive text-4xl sm:text-5xl text-brand-cobalt block mb-2 editable-element">Uniendo hilos de amor y solidaridad</span>
+                <h2 class="font-sans text-xs uppercase tracking-[0.3em] text-brand-gold-muted font-semibold editable-element">¿Quiénes Somos?</h2>
+                <div class="w-16 h-0.5 bg-brand-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="rose-gold-card p-8 rounded-2xl text-center space-y-4 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 rounded-full bg-brand-palo-rosa/30 border border-brand-palo-rosa flex items-center justify-center mx-auto text-brand-cobalt text-2xl">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-brand-cobalt font-semibold editable-element">Moda con Propósito</h3>
+                    <p class="font-sans text-xs text-brand-charcoal/75 leading-relaxed editable-element">
+                        Somos la alianza de diseñadores, artesanos y la comunidad del Colegio Taller de María que transforman telas en abrazos de apoyo para Cali y sus alrededores.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="rose-gold-card p-8 rounded-2xl text-center space-y-4 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 rounded-full bg-brand-gold-light/50 border border-brand-gold flex items-center justify-center mx-auto text-brand-cobalt text-2xl">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-brand-cobalt font-semibold editable-element">Respuesta Solidaria</h3>
+                    <p class="font-sans text-xs text-brand-charcoal/75 leading-relaxed editable-element">
+                        Ante las adversidades del terremoto, nuestra creatividad se vuelve un faro de auxilio. Cada pasarela es un motor de recaudación transparente.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="rose-gold-card p-8 rounded-2xl text-center space-y-4 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 rounded-full bg-brand-palo-rosa/30 border border-brand-palo-rosa flex items-center justify-center mx-auto text-brand-cobalt text-2xl">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-brand-cobalt font-semibold editable-element">Identidad Caleña</h3>
+                    <p class="font-sans text-xs text-brand-charcoal/75 leading-relaxed editable-element">
+                        Exaltamos nuestra vibra, el sabor de la salsa y la elegancia del trópico con prendas exclusivas llenas de la gracia y picardía de nuestra tierra.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quote Banner -->
+            <div class="mt-16 cobalt-gradient-bg rounded-2xl p-8 sm:p-12 text-center text-white relative overflow-hidden shadow-xl border border-brand-gold/30">
+                <div class="relative z-10 max-w-3xl mx-auto space-y-4">
+                    <p class="font-cursive text-3xl sm:text-5xl text-brand-gold-light editable-element">"Mirá ve, cuando Cali y el Colegio Taller de María se unen, la brisa de la tarde trae esperanza para todos."</p>
+                    <p class="font-sans text-xs uppercase tracking-widest text-brand-rose editable-element">Comité Organizador RUNWAY CTM 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: CATALOG / PRODUCTS -->
+    <section id="catalog" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="font-cursive text-4xl sm:text-5xl text-brand-cobalt block mb-2 editable-element">Colección Exclusiva 'Salsa & Seda'</span>
+                <h2 class="font-sans text-xs uppercase tracking-[0.3em] text-brand-gold-muted font-semibold editable-element">Catálogo de Productos Solidarios</h2>
+                <p class="font-sans text-xs text-brand-charcoal/70 mt-3 editable-element">Cada prenda comprada destina un porcentaje directo al fondo de ayuda para damnificados.</p>
+                <div class="w-16 h-0.5 bg-brand-gold mx-auto mt-4"></div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Product 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-brand-rose/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=600" alt="Vestido Borondo Nocturno" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-brand-cobalt text-brand-gold-light text-[10px] font-sans font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Alta Costura</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl text-brand-cobalt font-semibold editable-element">Vestido 'El Borondo Nocturno'</h3>
+                            <p class="font-sans text-xs text-brand-charcoal/70 mt-2 leading-relaxed editable-element">
+                                ¡Mirá esta joya ve! Un vestido fluido color azul cobalto inspirado en una caminata nocturna. Elegante, fresco y bien chusco.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-brand-beige flex items-center justify-between">
+                            <div>
+                                <span class="font-sans text-[10px] text-brand-gold-muted uppercase block">Precio Solidario</span>
+                                <span class="font-serif text-xl font-bold text-brand-cobalt">$ 350.000 COP</span>
+                            </div>
+                            <button onclick="openBuyModal('Vestido \'El Borondo Nocturno\'', 350000)" class="bg-brand-palo-rosa hover:bg-brand-gold-muted text-white p-3 rounded-full transition-colors duration-300" title="Comprar / Aportar">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-brand-rose/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=600" alt="Enterizo Chusco de la Brisa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-brand-palo-rosa text-white text-[10px] font-sans font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Edición Limitada</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl text-brand-cobalt font-semibold editable-element">Enterizo 'Brisa de las Cinco'</h3>
+                            <p class="font-sans text-xs text-brand-charcoal/70 mt-2 leading-relaxed editable-element">
+                                ¿Oís el vientecito que refresca la ciudad? Este enterizo en tonos palo rosa te mantiene fresca y elegante a cualquier hora.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-brand-beige flex items-center justify-between">
+                            <div>
+                                <span class="font-sans text-[10px] text-brand-gold-muted uppercase block">Precio Solidario</span>
+                                <span class="font-serif text-xl font-bold text-brand-cobalt">$ 280.000 COP</span>
+                            </div>
+                            <button onclick="openBuyModal('Enterizo \'Brisa de las Cinco\'', 280000)" class="bg-brand-palo-rosa hover:bg-brand-gold-muted text-white p-3 rounded-full transition-colors duration-300" title="Comprar / Aportar">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-brand-rose/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=600" alt="Guayabera Dorada Delirio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-brand-gold text-white text-[10px] font-sans font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Artesanal</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl text-brand-cobalt font-semibold editable-element">Guayabera 'Sabor & Delirio'</h3>
+                            <p class="font-sans text-xs text-brand-charcoal/70 mt-2 leading-relaxed editable-element">
+                                Para tirar paso con categoría, oís. Confeccionada en lino italiano con bordados dorados a mano por artesanas del Valle. ¡Una belleza total!
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-brand-beige flex items-center justify-between">
+                            <div>
+                                <span class="font-sans text-[10px] text-brand-gold-muted uppercase block">Precio Solidario</span>
+                                <span class="font-serif text-xl font-bold text-brand-cobalt">$ 220.000 COP</span>
+                            </div>
+                            <button onclick="openBuyModal('Guayabera \'Sabor & Delirio\'', 220000)" class="bg-brand-palo-rosa hover:bg-brand-gold-muted text-white p-3 rounded-full transition-colors duration-300" title="Comprar / Aportar">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-brand-rose/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&q=80&w=600" alt="Capa Dorada Azúcar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-brand-cobalt text-brand-gold-light text-[10px] font-sans font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Icono Gala</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl text-brand-cobalt font-semibold editable-element">Ensamble 'Flor de Caña'</h3>
+                            <p class="font-sans text-xs text-brand-charcoal/70 mt-2 leading-relaxed editable-element">
+                                Entalle sutil color beige crema con detalles en hilo de oro. Que te vean llegar y digan: ¡Mirá qué elegancia de mujer!
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-brand-beige flex items-center justify-between">
+                            <div>
+                                <span class="font-sans text-[10px] text-brand-gold-muted uppercase block">Precio Solidario</span>
+                                <span class="font-serif text-xl font-bold text-brand-cobalt">$ 410.000 COP</span>
+                            </div>
+                            <button onclick="openBuyModal('Ensamble \'Flor de Caña\'', 410000)" class="bg-brand-palo-rosa hover:bg-brand-gold-muted text-white p-3 rounded-full transition-colors duration-300" title="Comprar / Aportar">
+                                <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PREGUNTAS FRECUENTES (FAQ) -->
+    <section id="faq" class="py-20 bg-brand-beige/40 border-t border-brand-rose/30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="font-cursive text-4xl sm:text-5xl text-brand-cobalt block mb-2 editable-element">Resolvemos tus dudas, ve</span>
+                <h2 class="font-sans text-xs uppercase tracking-[0.3em] text-brand-gold-muted font-semibold editable-element">Preguntas Frecuentes</h2>
+                <div class="w-16 h-0.5 bg-brand-gold mx-auto mt-4"></div>
+            </div>
+
+            <!-- Accordion items -->
+            <div class="space-y-4" id="faq-accordion">
+                
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-xl border border-brand-rose/30 overflow-hidden transition-all duration-200">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-serif text-xl text-brand-cobalt flex justify-between items-center focus:outline-none">
+                        <span class="editable-element">¿A dónde se destina el dinero recaudado en RUNWAY CTM 2026?</span>
+                        <i class="fas fa-chevron-down text-brand-gold-muted text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 font-sans text-xs text-brand-charcoal/80 leading-relaxed border-t border-brand-beige/60 pt-3 editable-element">
+                        El 100% de los fondos recibidos mediante donaciones y un porcentaje mayoritario de la venta del catálogo se canalizan a la Cruz Roja Colombiana Seccional Valle para la construcción de viviendas temporales e insumos médicos para los afectados por el sismo.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-xl border border-brand-rose/30 overflow-hidden transition-all duration-200">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-serif text-xl text-brand-cobalt flex justify-between items-center focus:outline-none">
+                        <span class="editable-element">¿Puedo realizar una donación sin comprar prendas de vestir?</span>
+                        <i class="fas fa-chevron-down text-brand-gold-muted text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 font-sans text-xs text-brand-charcoal/80 leading-relaxed border-t border-brand-beige/60 pt-3 editable-element">
+                        ¡Claro que sí, oís! Puedes hacer aportes voluntarios desde $1.000 COP usando el botón de "Donar" en cualquier momento mediante Nequi, Daviplata o PSE.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-xl border border-brand-rose/30 overflow-hidden transition-all duration-200">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-serif text-xl text-brand-cobalt flex justify-between items-center focus:outline-none">
+                        <span class="editable-element">¿Dónde se llevará a cabo la pasarela presencial?</span>
+                        <i class="fas fa-chevron-down text-brand-gold-muted text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 font-sans text-xs text-brand-charcoal/80 leading-relaxed border-t border-brand-beige/60 pt-3 editable-element">
+                        El gran desfile se realizará en las instalaciones del Colegio Taller de María, con transmisión en vivo por nuestras redes sociales oficiales.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-xl border border-brand-rose/30 overflow-hidden transition-all duration-200">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-serif text-xl text-brand-cobalt flex justify-between items-center focus:outline-none">
+                        <span class="editable-element">¿Realizan envíos fuera de la ciudad de Cali?</span>
+                        <i class="fas fa-chevron-down text-brand-gold-muted text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 font-sans text-xs text-brand-charcoal/80 leading-relaxed border-t border-brand-beige/60 pt-3 editable-element">
+                        Llegamos a todo Colombia y envíos internacionales seleccionados. La esperanza no tiene fronteras.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FOOTER & INSTAGRAM INTEGRATION -->
+    <footer class="cobalt-gradient-bg text-white pt-16 pb-12 border-t border-brand-gold/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-brand-gold/20">
+                
+                <!-- Col 1 -->
+                <div class="space-y-4 md:col-span-1">
+                    <span class="font-cursive text-4xl text-brand-gold-light block editable-element">Runway CTM</span>
+                    <p class="font-serif text-sm text-brand-rose italic editable-element">Cali se viste de esperanza 2026.</p>
+                    <p class="font-sans text-xs text-white/70 leading-relaxed editable-element">
+                        Un evento benéfico que resalta lo mejor de la moda vallecaucana por una causa humanitaria.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div class="space-y-3 font-sans text-xs">
+                    <h4 class="font-serif text-lg text-brand-gold-light">Navegación</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li><a href="#home" class="hover:text-brand-gold transition-colors">Inicio</a></li>
+                        <li><a href="#about" class="hover:text-brand-gold transition-colors">Quiénes Somos</a></li>
+                        <li><a href="#catalog" class="hover:text-brand-gold transition-colors">Catálogo de Moda</a></li>
+                        <li><a href="#faq" class="hover:text-brand-gold transition-colors">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Social Instagram focus -->
+                <div class="space-y-3 font-sans text-xs">
+                    <h4 class="font-serif text-lg text-brand-gold-light">Comunidad & Redes</h4>
+                    <p class="text-white/80 editable-element">Sigue la cobertura oficial y el minuto a minuto de la pasarela:</p>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white px-4 py-2 rounded-full font-semibold hover:opacity-90 transition-opacity">
+                        <i class="fab fa-instagram text-base"></i>
+                        <span>@RunwayCTM2026</span>
+                    </a>
+                </div>
+
+                <!-- Col 4 -->
+                <div class="space-y-3 font-sans text-xs">
+                    <h4 class="font-serif text-lg text-brand-gold-light">Sede Oficial</h4>
+                    <p class="text-white/80 editable-element"><i class="fas fa-map-pin text-brand-gold mr-2"></i> Colegio Taller de María</p>
+                    <p class="text-white/80 editable-element"><i class="fas fa-envelope text-brand-gold mr-2"></i> contacto@runwayctm.co</p>
+                </div>
+
+            </div>
+
+            <div class="pt-8 text-center font-sans text-xs text-white/50 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <p>&copy; 2026 RUNWAY CTM. Todos los derechos reservados. Colegio Taller de María.</p>
+                <p class="font-cursive text-lg text-brand-gold-light">Hecho con amor y sabor caleño <i class="fas fa-heart text-red-400"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PAYMENT & DONATION MODAL (Pasarelas de Pago) -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-brand-cream rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-brand-gold/40 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-brand-cobalt hover:text-brand-gold text-xl p-2">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="text-center mb-6">
+                <span class="font-cursive text-3xl text-brand-cobalt block">Pasarela de Solidaridad</span>
+                <h3 id="modal-title" class="font-serif text-xl font-bold text-brand-gold-muted">Proceso de Compra / Aporte</h3>
+            </div>
+
+            <form id="checkout-form" onsubmit="handlePaymentSubmit(event)" class="space-y-5 font-sans text-xs">
+                
+                <!-- Selected Item Banner -->
+                <div id="item-summary-box" class="bg-brand-beige p-3 rounded-xl border border-brand-rose/40 flex justify-between items-center hidden">
+                    <span id="summary-name" class="font-semibold text-brand-cobalt">Producto</span>
+                    <span id="summary-price" class="font-serif text-sm font-bold text-brand-gold-muted">$0 COP</span>
+                </div>
+
+                <!-- Mandatory/Optional Earthquake Donation Field -->
+                <div class="bg-gradient-to-r from-brand-palo-rosa/20 to-brand-gold-light/30 p-4 rounded-xl border border-brand-palo-rosa/40 space-y-2">
+                    <label class="font-semibold text-brand-cobalt flex items-center justify-between">
+                        <span><i class="fas fa-hand-holding-heart text-brand-palo-rosa mr-1"></i> Donación Damnificados Terremoto:</span>
+                        <span class="text-[10px] text-brand-gold-muted uppercase font-normal">(Mínimo $1.000 COP)</span>
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-2.5 font-bold text-brand-cobalt">$</span>
+                        <input type="number" id="donation-amount" min="1000" value="5000" step="1000" required class="w-full pl-8 pr-3 py-2 bg-white rounded-lg border border-brand-rose focus:ring-2 focus:ring-brand-gold outline-none text-brand-cobalt font-semibold">
+                    </div>
+                    <p class="text-[10px] text-brand-charcoal/70">Tus aportes directos salvan vidas y reconstruyen hogares en nuestro departamento.</p>
+                </div>
+
+                <!-- User Information -->
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-brand-cobalt font-medium mb-1">Nombre Completo</label>
+                        <input type="text" required placeholder="Ej: Maria Isabel Urdinola" class="w-full px-3 py-2 bg-white rounded-lg border border-brand-rose/60 focus:ring-1 focus:ring-brand-gold outline-none">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-brand-cobalt font-medium mb-1">Correo Electrónico</label>
+                            <input type="email" required placeholder="tu@correo.com" class="w-full px-3 py-2 bg-white rounded-lg border border-brand-rose/60 focus:ring-1 focus:ring-brand-gold outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-brand-cobalt font-medium mb-1">Teléfono / Celular</label>
+                            <input type="tel" required placeholder="300 000 0000" class="w-full px-3 py-2 bg-white rounded-lg border border-brand-rose/60 focus:ring-1 focus:ring-brand-gold outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method Options -->
+                <div>
+                    <label class="block text-brand-cobalt font-medium mb-2">Selecciona la Pasarela de Pago</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="border border-brand-rose/60 bg-white p-3 rounded-xl flex items-center space-x-2 cursor-pointer hover:border-brand-gold transition-colors">
+                            <input type="radio" name="payment-method" value="nequi" checked class="text-brand-cobalt focus:ring-0">
+                            <span class="font-semibold text-brand-cobalt">Nequi</span>
+                        </label>
+                        <label class="border border-brand-rose/60 bg-white p-3 rounded-xl flex items-center space-x-2 cursor-pointer hover:border-brand-gold transition-colors">
+                            <input type="radio" name="payment-method" value="daviplata" class="text-brand-cobalt focus:ring-0">
+                            <span class="font-semibold text-red-600">Daviplata</span>
+                        </label>
+                        <label class="border border-brand-rose/60 bg-white p-3 rounded-xl flex items-center space-x-2 cursor-pointer hover:border-brand-gold transition-colors">
+                            <input type="radio" name="payment-method" value="pse" class="text-brand-cobalt focus:ring-0">
+                            <span class="font-semibold text-blue-800">PSE / Banco</span>
+                        </label>
+                        <label class="border border-brand-rose/60 bg-white p-3 rounded-xl flex items-center space-x-2 cursor-pointer hover:border-brand-gold transition-colors">
+                            <input type="radio" name="payment-method" value="card" class="text-brand-cobalt focus:ring-0">
+                            <span class="font-semibold text-brand-gold-muted"><i class="far fa-credit-card"></i> Tarjeta</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Total Summary -->
+                <div class="pt-3 border-t border-brand-rose/40 flex justify-between items-center text-sm font-bold text-brand-cobalt">
+                    <span>Total a Transferir:</span>
+                    <span id="final-total" class="font-serif text-xl text-brand-gold-muted">$0 COP</span>
+                </div>
+
+                <!-- Action Button -->
+                <button type="submit" class="w-full bg-gradient-to-r from-brand-cobalt to-brand-cobalt-dark hover:from-brand-gold-muted hover:to-brand-gold text-brand-gold-light hover:text-white py-3.5 rounded-xl font-sans text-xs tracking-widest uppercase font-semibold shadow-lg transition-all duration-300">
+                    <i class="fas fa-lock mr-2"></i> Confirmar Pago Seguro
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CUSTOM CONFIRMATION MESSAGE BOX -->
+    <div id="message-box" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center border border-brand-gold/40 shadow-2xl space-y-4">
+            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="font-serif text-2xl text-brand-cobalt font-bold">¡Muchas Gracias, oís!</h3>
+            <p id="message-text" class="font-sans text-xs text-brand-charcoal/80 leading-relaxed">
+                Tu transacción ha sido aprobada con éxito. Cali te agradece por vestirte de esperanza y apoyar a nuestros hermanos damnificados.
+            </p>
+            <button onclick="closeMessageBox()" class="bg-brand-cobalt text-brand-gold-light px-6 py-2.5 rounded-full font-sans text-xs tracking-wider uppercase font-semibold hover:bg-brand-gold-muted hover:text-white transition-colors">
+                Aceptar
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTION -->
+    <script>
+        // Inline Text Edit Mode
+        let isEditMode = false;
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const elements = document.querySelectorAll('.editable-element');
+            const editBtn = document.getElementById('edit-mode-btn');
+            const editLabel = document.getElementById('edit-mode-label');
+
+            elements.forEach(el => {
+                el.contentEditable = isEditMode;
+                if (isEditMode) {
+                    el.classList.add('outline-dashed', 'outline-2', 'outline-brand-gold', 'p-1', 'rounded');
+                } else {
+                    el.classList.remove('outline-dashed', 'outline-2', 'outline-brand-gold', 'p-1', 'rounded');
+                }
+            });
+
+            if (isEditMode) {
+                editBtn.classList.remove('bg-brand-gold-light/60');
+                editBtn.classList.add('bg-brand-gold', 'text-white');
+                if (editLabel) editLabel.innerText = 'Guardar Cambios';
+            } else {
+                editBtn.classList.remove('bg-brand-gold', 'text-white');
+                editBtn.classList.add('bg-brand-gold-light/60');
+                if (editLabel) editLabel.innerText = 'Editar Página';
+            }
+        }
+
+        // Global variables for product purchase calculation
+        let currentProductPrice = 0;
+        let currentProductName = '';
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                // Toggle active content
+                content.classList.toggle('hidden');
+                
+                // Rotate icon
+                if (content.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Checkout & Donation Modal Handlers
+        const modal = document.getElementById('checkout-modal');
+        const itemSummaryBox = document.getElementById('item-summary-box');
+        const summaryName = document.getElementById('summary-name');
+        const summaryPrice = document.getElementById('summary-price');
+        const donationInput = document.getElementById('donation-amount');
+        const finalTotal = document.getElementById('final-total');
+
+        function updateTotals() {
+            const donationVal = parseInt(donationInput.value) || 0;
+            const total = currentProductPrice + donationVal;
+            finalTotal.innerText = `$ ${total.toLocaleString('es-CO')} COP`;
+        }
+
+        donationInput.addEventListener('input', updateTotals);
+
+        function openBuyModal(productName, price) {
+            currentProductName = productName;
+            currentProductPrice = price;
+            
+            summaryName.innerText = productName;
+            summaryPrice.innerText = `$ ${price.toLocaleString('es-CO')} COP`;
+            itemSummaryBox.classList.remove('hidden');
+            document.getElementById('modal-title').innerText = 'Finalizar Compra y Donación';
+            
+            updateTotals();
+            modal.classList.remove('hidden');
+        }
+
+        function openDonateModal() {
+            currentProductName = '';
+            currentProductPrice = 0;
+            
+            itemSummaryBox.classList.add('hidden');
+            document.getElementById('modal-title').innerText = 'Realizar Donación Directa';
+            
+            updateTotals();
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Form Submission (Simulated Payment)
+        function handlePaymentSubmit(e) {
+            e.preventDefault();
+            closeModal();
+            
+            const donationVal = parseInt(donationInput.value) || 0;
+            const messageText = document.getElementById('message-text');
+
+            if (currentProductPrice > 0) {
+                messageText.innerText = `¡Tu orden por "${currentProductName}" y tu aporte solidario de $${donationVal.toLocaleString('es-CO')} COP han sido procesados! Nos pondremos en contacto contigo vía WhatsApp/Correo. ¡Gracias por aportar a Cali!`;
+            } else {
+                messageText.innerText = `¡Tu donación voluntaria de $${donationVal.toLocaleString('es-CO')} COP ha sido recibida! Gracias por vestir a Cali de esperanza y reconstruir nuestra tierra.`;
+            }
+
+            document.getElementById('message-box').classList.remove('hidden');
+        }
+
+        function closeMessageBox() {
+            document.getElementById('message-box').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
